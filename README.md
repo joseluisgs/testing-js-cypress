@@ -112,7 +112,7 @@ npm run cy:run --headed
 ```
 
 ## Ejemplos
-En a carpeta Integrations/examples tienes muchos ejemplos para aprender todo de como usarlo. [Aquí](https://github.com/bhaidar/testing-workshop-cypress) puede encontrar más información de como usarlo.
+En a carpeta Integrations/examples tienes muchos ejemplos para aprender todo de como usarlo. [Aquí] también (https://github.com/bhaidar/testing-workshop-cypress) puede encontrar más información de como usarlo.
 
 ## Algunos comandos útiles de Cypress
 - visit: redirige a Chrome a la url que se le pasa por parámetro.
