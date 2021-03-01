@@ -6,8 +6,8 @@ Conjunto de ejemplos para realizar test E2E y BDD usando Cypress con JavaScript 
 [![Vue Ready](https://img.shields.io/badge/Vue.js-%20Ready-%2342b983)](https://es.vuejs.org/)
 [![JS Code](https://img.shields.io/badge/JS%20Code-ES2019-yellow)](https://www.ecma-international.org/ecma-262)
 [![JS Style](https://img.shields.io/badge/JS%20Style-AirBnB-ff69b4)](https://airbnb.io/javascript)
-[![Licence](https://img.shields.io/github/license/joseluisgs/testing-js-jest)](https://github.com/joseluisgs/testing-js-jest/blob/main/LICENSE)
-![GitHub](https://img.shields.io/github/last-commit/joseluisgs/testing-js-jest)
+[![Licence](https://img.shields.io/github/license/joseluisgs/testing-js-jest)](https://github.com/joseluisgs/testing-js-cypress/blob/main/LICENSE)
+![GitHub](https://img.shields.io/github/last-commit/joseluisgs/testing-js-cypress)
 
 
 - [Testing JS con CYPRESS](#testing-js-con-cypress)
