@@ -213,10 +213,7 @@ Ejemplo para ejecutar los test
 ```bash
 npm run test:e2e
 ```
-E iremos aplicando ATDD/TDD en Test E2E. Puedes seguir el proyecto commit a commit, así como sucesivos tests.
-
-
-
+E iremos aplicando ATDD/TDD en Test E2E. Puedes seguir el proyecto commit a commit, así como sucesivos tests que vayan surgiendo.
 
 # Autor
 
