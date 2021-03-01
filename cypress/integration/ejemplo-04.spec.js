@@ -5,8 +5,11 @@ describe('Testing Wikipedia', () => {
     cy.visit('https://www.wikipedia.org');
     cy.get("input[type='search']").type('Jugabilidad');
     cy.get("button[type='submit']").click();
-    // cy.contains('Search results');
     cy.contains('Jugabilidad');
+    // Y estoy yo como padre de la criatura 😁
+    cy.contains('González Sánchez, J. L.');
+    // Sacamos una captura
+    cy.screenshot();
   });
 
   // Cuando un usuario visita la página de inicio,
@@ -22,6 +25,8 @@ describe('Testing Wikipedia', () => {
       'https://yo.wikipedia.org/wiki/Oj%C3%BAew%C3%A9_%C3%80k%E1%BB%8D%CC%81k%E1%BB%8D%CC%81',
     );
     cy.contains('Ẹ kú àbọ̀');
+    // Sacamos una captura
+    cy.screenshot();
   });
 
   // Cuando un usuario visita la página de inicio y hace clic en el enlace a Wiktionary,
@@ -38,5 +43,7 @@ describe('Testing Wikipedia', () => {
     cy.get('#searchInput').type('Svelte{enter}');
     cy.contains('Etymology');
     cy.contains('svelte');
+    // Sacamos una captura
+    cy.screenshot();
   });
 });
