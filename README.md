@@ -196,7 +196,7 @@ En este caso vamos a ver como testear un Framework. Es importante remarcar que c
 ![img](https://www.fullstackpython.com/img/logos/vuejs-wide.png)
 
 ## Testear en Vue.js
-Nos centraremos en ejecutar el comando test:e2e para ejecutar nuestros test e2e con Cypress. Para ello crearemos el proyecto con [Vue CLI](https://cli.vuejs.org/) indicando en la configuración manual el uso de test e2e. Puedes verlo en el proyecto todoapp.
+Nos centraremos en ejecutar el comando test:e2e para ejecutar nuestros test e2e con Cypress. Para ello crearemos el proyecto con [Vue CLI](https://cli.vuejs.org/) indicando en la configuración manual el uso de test e2e. Puedes verlo en el proyecto todoapp, una aplicación clonada del listado de ejemplos de Vue.js y que solo nos interesa para testear. Podríamos haber cogido cualquiera nuestra :). Un ejemplo completo más profundo lo tienes [aquí](https://www.cypress.io/blog/2017/11/28/testing-vue-web-application-with-vuex-data-store-and-rest-backend/).
 ```bash
 ? Please pick a preset: Manually select features
 ? Check the features needed for your project: Choose Vue version, Babel, Linter, Unit, E2E
@@ -213,7 +213,9 @@ Ejemplo para ejecutar los test
 ```bash
 npm run test:e2e
 ```
-E iremos aplicando ATDD/TDD. Puedes seguir el proyecto commit a commit.
+E iremos aplicando ATDD/TDD en Test E2E. Puedes seguir el proyecto commit a commit, así como sucesivos tests.
+
+
 
 
 # Autor

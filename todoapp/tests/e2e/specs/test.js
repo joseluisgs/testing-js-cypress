@@ -1,8 +1,10 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('My First Test', () => {
-  it('Visits the app root url', () => {
+describe('Mi Primer Test', () => {
+  it('Visitar la raiz de mi proyect', () => {
     cy.visit('/');
-    cy.contains('h1', 'Welcome to Your Vue.js App');
+    cy.contains('h1', 'todos');
+    // Sacamos una captura
+    cy.screenshot();
   });
 });
