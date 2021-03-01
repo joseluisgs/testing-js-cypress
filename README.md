@@ -13,7 +13,7 @@ Conjunto de ejemplos para realizar test E2E y BDD usando Cypress con JavaScript 
 - [Testing JS con CYPRESS](#testing-js-con-cypress)
   - [Acerca de](#acerca-de)
     - [Consideraciones](#consideraciones)
-- [¿Por qué Cypress?](#por-qué-cypress)
+- [CYPRESS](#cypress)
   - [Otras alternativas](#otras-alternativas)
   - [Instalación](#instalación)
   - [Otras configuraciones](#otras-configuraciones)
@@ -32,6 +32,8 @@ Conjunto de ejemplos para realizar test E2E y BDD usando Cypress con JavaScript 
     - [Beneficios](#beneficios)
     - [¿Cómo usarlas?](#cómo-usarlas)
       - [Plantilla y ejemplos de historias de usuario](#plantilla-y-ejemplos-de-historias-de-usuario)
+- [Testeando un Framework: Vue.js](#testeando-un-framework-vuejs)
+  - [Testear en Vue.js](#testear-en-vuejs)
 - [Autor](#autor)
   - [Licencia](#licencia)
     - [Agradecimientos](#agradecimientos)
@@ -44,7 +46,7 @@ No intentes ejecutar todos os test porque pueden dar error por incompatibilidade
 
 Este tutorial es la segunda parte de [Testeando JS con Jest](https://github.com/joseluisgs/testing-js-jest), donde se abordan los Test Unitarios.
 
-# ¿Por qué Cypress?
+# CYPRESS
 [Cypress](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell) es una de las muchas posibilidades que tenemos para testear nuestro código o proyecto en JavaScript/HTML para realizar pruebas E2E de manera automatizada con mucha potencia y nos permite muchas posibilidades para analizar que nuestro que interaccionamos con nuestro código resolviendo las [historias de usuario](https://www.atlassian.com/es/agile/project-management/user-stories) a realizar.
 
 ![img](https://www.pngkit.com/png/detail/411-4116389_cypress-io-logo7639-cypress-io-logo.png)
@@ -87,7 +89,7 @@ npm run cy:open
 - Support: Lugar para colocar comportamientos reutilizables, como comandos personalizados o anulaciones globales, que estarán disponibles para todos los tests.
 
 ## Asercciones
-Puedes consultarlas [aqui](https://docs.cypress.io/guides/references/assertions.html). Pero se basan principalmente en [Chai](https://docs.cypress.io/guides/references/assertions.html#Chai) y [Sinon](https://docs.cypress.io/guides/references/assertions.html#Sinon-Chai).
+Puedes consultarlas [aquí](https://docs.cypress.io/guides/references/assertions.html). Pero se basan principalmente en [Chai](https://docs.cypress.io/guides/references/assertions.html#Chai) y [Sinon](https://docs.cypress.io/guides/references/assertions.html#Sinon-Chai).
 
 ## Ejecutando los Tests
 El comando run ejecutará todos tests que tengamos dentro de la carpeta Integration.
@@ -110,7 +112,7 @@ npm run cy:run --headed
 ```
 
 ## Ejemplos
-En a carpeta Integrations/examples tienes muchos ejemplso para aprender todo de como usarlo.
+En a carpeta Integrations/examples tienes muchos ejemplos para aprender todo de como usarlo. [Aquí](https://github.com/bhaidar/testing-workshop-cypress) puede encontrar más información de como usarlo.
 
 ## Algunos comandos útiles de Cypress
 - visit: redirige a Chrome a la url que se le pasa por parámetro.
@@ -148,7 +150,7 @@ En las pruebas E2E detectamos principalmente:
 Debido a la importancia del usuario, es importante que estos pruebas se realicen teniendo en cuenta las historias de usuario para comprobar que los resultados tras la interacción cumplen los criterios de aceptación.
 
 ## E2E en BDD/TDD
-En definitiva definimos funcionalidades y escenarios de uso, que desarrollamos en distntos componentes y funciones que testeamos (test unitarios), integramos (integración) y finalmente comprobamos si todo el flujo sigue el escenario indicado desde el punto de vista del usuario. Estos son los pilares del 
+En definitiva definimos funcionalidades y escenarios de uso, que desarrollamos en distintos componentes y funciones que testeamos (test unitarios), integramos (integración) y finalmente comprobamos si todo el flujo sigue el escenario indicado desde el punto de vista del usuario. Estos son los pilares del 
 
 ![img](https://blog.softtek.com/hs-fs/hubfs/blogs/innovationlabs/bdd.png?width=832&name=bdd.png)
 
@@ -163,7 +165,7 @@ Las historias de usuario tienen varios beneficios clave:
 - Las historias permiten la colaboración. Con el objetivo definido, el equipo puede colaborar para decidir cómo ofrecer un mejor servicio al usuario y cumplir con dicho objetivo.
 - Las historias impulsan soluciones creativas. Las historias fomentan que el equipo piense de forma crítica y creativa sobre cómo lograr mejor un objetivo.
 - Las historias motivan. Con cada historia el equipo de desarrollo disfruta de un pequeño reto y una pequeña victoria, lo que aumenta la motivación.
-- Son las base de nuestros test y nos aseguran que una vez cumplidas se cumple los reusitos del software y sus criterios de aceptación.
+- Son las base de nuestros test y nos aseguran que una vez cumplidas se cumple los requisitos del software y sus criterios de aceptación.
 
 ### ¿Cómo usarlas?
 - Describe tareas o subtareas: decide qué pasos específicos deben completarse y quién es responsable de cada uno de ellos.
@@ -187,6 +189,32 @@ Por ejemplo, las historias de usuario pueden tener este aspecto:
 - Como Pepe, quiero invitar a mis amigos, para que podamos disfrutar de este servicio juntos.
 - Como Ana, quiero organizar mi trabajo, para poder sentir que tengo un mayor control.
 - Como gestor, quiero poder comprender el progreso de mis compañeros, para poder informar sobre nuestros éxitos y fallos.
+
+# Testeando un Framework: Vue.js
+En este caso vamos a ver como testear un Framework. Es importante remarcar que cada Framework tiene sus propias particularidades y debemos leer bien su documentación de como hacerlo. En nuestro caso usaremos [Vue.js](https://vuejs.org/) y configuramos el proyecto para realizar test E2E.
+
+![img](https://www.fullstackpython.com/img/logos/vuejs-wide.png)
+
+## Testear en Vue.js
+Nos centraremos en ejecutar el comando test:e2e para ejecutar nuestros test e2e con Cypress. Para ello crearemos el proyecto con [Vue CLI](https://cli.vuejs.org/) indicando en la configuración manual el uso de test e2e. Puedes verlo en el proyecto todoapp.
+```bash
+? Please pick a preset: Manually select features
+? Check the features needed for your project: Choose Vue version, Babel, Linter, Unit, E2E
+? Choose a version of Vue.js that you want to start the project with 2.x
+? Pick a linter / formatter config: Airbnb
+? Pick additional lint features: Lint on save
+? Pick a unit testing solution: Jest
+? Pick an E2E testing solution: (Use arrow keys)
+❯ Cypress (Chrome only) 
+  Nightwatch (WebDriver-based) 
+  WebdriverIO (WebDriver/DevTools based) 
+```
+Ejemplo para ejecutar los test
+```bash
+npm run test:e2e
+```
+E iremos aplicando ATDD/TDD. Puedes seguir el proyecto commit a commit.
+
 
 # Autor
 
