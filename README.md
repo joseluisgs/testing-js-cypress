@@ -23,8 +23,15 @@ Conjunto de ejemplos para realizar test E2E y BDD usando Cypress con JavaScript 
   - [Ejecutando los Tests](#ejecutando-los-tests)
   - [Si el test falla](#si-el-test-falla)
   - [Ejemplos](#ejemplos)
-- [Principales de Cypress](#principales-de-cypress)
-  - [Buenas pŕaticas](#buenas-pŕaticas)
+  - [Algunos comandos útiles de Cypress](#algunos-comandos-útiles-de-cypress)
+  - [Buenas pŕacticas](#buenas-pŕacticas)
+- [Introducción al Testing E2E](#introducción-al-testing-e2e)
+  - [Objetivos](#objetivos)
+  - [E2E en BDD/TDD](#e2e-en-bddtdd)
+- [Historias de usuario](#historias-de-usuario)
+    - [Beneficios](#beneficios)
+    - [¿Cómo usarlas?](#cómo-usarlas)
+      - [Plantilla y ejemplos de historias de usuario](#plantilla-y-ejemplos-de-historias-de-usuario)
 - [Autor](#autor)
   - [Licencia](#licencia)
     - [Agradecimientos](#agradecimientos)
@@ -38,11 +45,16 @@ No intentes ejecutar todos os test porque pueden dar error por incompatibilidade
 Este tutorial es la segunda parte de [Testeando JS con Jest](https://github.com/joseluisgs/testing-js-jest), donde se abordan los Test Unitarios.
 
 # ¿Por qué Cypress?
-[Cypress](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell) es una de las muchas posibilidades que tenemos para testear nuestro código o proyecto en JavaScript/HTML para realizar pruebas E2E de manera automatizada con mucha potencia y nos permite muchas posibilidades para anlaizar que nuestro que interaccionamos con nuestro código resolviendo las [historias de usuario](https://www.atlassian.com/es/agile/project-management/user-stories) a realizar.
+[Cypress](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell) es una de las muchas posibilidades que tenemos para testear nuestro código o proyecto en JavaScript/HTML para realizar pruebas E2E de manera automatizada con mucha potencia y nos permite muchas posibilidades para analizar que nuestro que interaccionamos con nuestro código resolviendo las [historias de usuario](https://www.atlassian.com/es/agile/project-management/user-stories) a realizar.
+
+![img](https://www.pngkit.com/png/detail/411-4116389_cypress-io-logo7639-cypress-io-logo.png)
 
 En cualquier caso, las bases de estos ejemplos te servirá para las distintas alternativas existentes.
 
-![img](https://www.pngkit.com/png/detail/411-4116389_cypress-io-logo7639-cypress-io-logo.png)
+Recuerda que Cypress.io es una herramienta de testeo de front-end de código abierto construida para la web moderna. Este framework “todo en uno” incluye librerías de aserciones, mocks y pruebas end-to-end automáticas sin utilizar Selenium. Como dice en su web: "Cypress prueba todo lo que se ejecuta en un navegador web”. Esto no implica que te saltes los test unitarios 😉
+
+![img](https://www.paradigmadigital.com/wp-content/uploads/2018/03/Cypress-1.png)
+
 
 ## Otras alternativas
 Existen muchas alternativas. En este tutorial me centro en Cypress, pero como he dicho hay varias ya sea para test unitarios, BDD, TDD, BDD o E2E. Te recomiendo [este artículo](https://medium.com/welldone-software/an-overview-of-javascript-testing-7ce7298b9870) para tener una visión al respecto.
@@ -100,7 +112,7 @@ npm run cy:run --headed
 ## Ejemplos
 En a carpeta Integrations/examples tienes muchos ejemplso para aprender todo de como usarlo.
 
-# Principales de Cypress
+## Algunos comandos útiles de Cypress
 - visit: redirige a Chrome a la url que se le pasa por parámetro.
 - get: obtiene un elemento por el identificador que le pasemos, para realizar acciones sobre él. Como hemos explicado en el apartado anterior, todos los identificadores que pasemos será obtenidos del CSS.
 - children: nos permite obtener un elemento que pasamos por parámetro, que desciende del elemento que hemos obtenido con la función get.
@@ -113,8 +125,68 @@ submit: permite enviar el contenido del formulario.
 
 A todas las funciones se les puede pasar un json con el elemento timeout. Este elemento nos permite incluir un tiempo que nos ayudará a esperar a que el elemento termine de cargar en la página.
 
-## Buenas pŕaticas
-Es importante que tengamos [buenas práticas](https://docs.cypress.io/guides/references/best-practices.html) para testear sin problemas. Entre ellas el manejo de selectores óptimos para nuestros elementos de la web, como pueden ser selectores de web del tipo con selectores del tipo id como son: data-testid (mi preferido para usarlo también con JEST) o data-cy.
+## Buenas pŕacticas
+Es importante que tengamos [buenas prácticas](https://docs.cypress.io/guides/references/best-practices.html) para testear sin problemas. Entre ellas el manejo de selectores óptimos para nuestros elementos de la web, como pueden ser selectores de web del tipo con selectores del tipo id como son: data-testid (mi preferido para usarlo también con JEST) o data-cy.
+
+# Introducción al Testing E2E
+Los Tests E2E (End to End) simulan el comportamiento de un usuario real. Prueban toda la aplicación de principio a fin, cubriendo así secciones que las pruebas unitarias y las pruebas de integración no cubren.
+
+![img](https://blog.irontec.com/wp-content/uploads/2019/01/test-pyramid-768x367.jpg)
+
+Aunque la pirámide de Cohn aconseja realizar más tests unitarios y de integración que tests E2E, ya que estos últimos pueden llegar a ser más frágiles y lentos, sabemos que son pruebas con mayor integración entre todas las partes de la aplicación y ejecutarán una gran parte del código de la aplicación.
+
+El objetivo de estas pruebas es el mismo que cualquier otro tipo de prueba: la detección de errores. Pero la perspectiva E2E nos permite dar un paso más y, aparte de errores con una visibilidad más o menos inmediata, podremos determinar la existencia de indefiniciones funcionales o errores ocultos en base a las historias de usuarios.
+
+## Objetivos 
+En las pruebas E2E detectamos principalmente:
+
+- Errores en la definición de la comunicación de dos sistemas: Un sistema envía unos parámetros, pero el sistema con el que se comunica espera recibir otros y se genera un error.
+- Ausencia de un sistema: No tenemos la versión actualizada de un sistema que forma parte del flujo de negocio a probar, o no se ha tenido en cuenta que ese sistema debe participar o debe modificarse.
+- Error en la definición del funcionamiento del flujo funcional: Todos los componentes y sistemas funcionan ‘ok’, hemos ejecutado la prueba de principio a fin sin errores, pero el resultado final es incoherente con el esperado. Esta es la gran potencia de las pruebas E2E, la detección de errores de definición y la solución suele pasar por una redefinición del proceso.
+- Que las historias de usuario se cumplen.
+
+Debido a la importancia del usuario, es importante que estos pruebas se realicen teniendo en cuenta las historias de usuario para comprobar que los resultados tras la interacción cumplen los criterios de aceptación.
+
+## E2E en BDD/TDD
+En definitiva definimos funcionalidades y escenarios de uso, que desarrollamos en distntos componentes y funciones que testeamos (test unitarios), integramos (integración) y finalmente comprobamos si todo el flujo sigue el escenario indicado desde el punto de vista del usuario. Estos son los pilares del 
+
+![img](https://blog.softtek.com/hs-fs/hubfs/blogs/innovationlabs/bdd.png?width=832&name=bdd.png)
+
+# Historias de usuario
+Una historia de usuario es una explicación general e informal de una función de software escrita desde la perspectiva del usuario final. Su propósito es articular cómo proporcionará una función de software valor al cliente.
+
+Las historias de usuario nos muestran los requisitos a conseguir, la interacción a realizar, los resultados esperados y cómo se realizará la aceptación de las mismas es por ello que son nuestro principal "contrato" para nuestros test unitarios y sobre todo nuestros test E2".
+
+### Beneficios
+Las historias de usuario tienen varios beneficios clave:
+- Las historias centran la atención en el usuario. Una lista de tareas pendientes mantiene al equipo centrado en tareas que deben completarse, pero un conjunto de historias lo mantiene centrado en solucionar problemas para usuarios reales.
+- Las historias permiten la colaboración. Con el objetivo definido, el equipo puede colaborar para decidir cómo ofrecer un mejor servicio al usuario y cumplir con dicho objetivo.
+- Las historias impulsan soluciones creativas. Las historias fomentan que el equipo piense de forma crítica y creativa sobre cómo lograr mejor un objetivo.
+- Las historias motivan. Con cada historia el equipo de desarrollo disfruta de un pequeño reto y una pequeña victoria, lo que aumenta la motivación.
+- Son las base de nuestros test y nos aseguran que una vez cumplidas se cumple los reusitos del software y sus criterios de aceptación.
+
+### ¿Cómo usarlas?
+- Describe tareas o subtareas: decide qué pasos específicos deben completarse y quién es responsable de cada uno de ellos.
+- Perfiles de usuario: ¿para quién? Si hay varios usuarios finales, considera crear varias historias.
+- Pasos ordenados: escribe una historia para cada paso en un proceso más grande.
+- Escucha el feedback: habla con los usuarios y capta sus problemas o necesidades en lo que dicen. No es necesario tener que estar adivinando las historias cuando puedes obtenerlas de tus clientes.
+- Tiempo: el tiempo es un tema delicado. Muchos equipos de desarrollo evitan hablar sobre el tiempo, y en su lugar confían en sus marcos de trabajo de estimación. Dado que las historias deberían completarse en un sprint, aquellas que puedan necesitar semanas o meses deberían dividirse en historias más pequeñas o considerarse un epic independiente.
+
+#### Plantilla y ejemplos de historias de usuario
+Las historias de usuario suelen expresarse con una frase simple con la siguiente estructura:
+
+“Como [perfil], [quiero] [para].”
+
+Desglosemos esta estructura:
+
+- “Como [perfil]”: ¿para quién desarrollamos esto? No solo buscamos un puesto, buscamos el perfil de la persona. Max. Nuestro equipo debería comprender quién es Max. Con suerte hemos entrevistado a muchos Max. Comprendemos cómo trabaja esa persona, cómo piensa y cómo se siente. Sentimos empatía por Max.
+- “Quiere”: aquí describimos su intención, no las funciones que usan. ¿Qué es lo que están intentando lograr realmente? Esta descripción debería realizarse con independencia de las implementaciones; si describes algún elemento de la IU y no el objetivo del usuario, estás cometiendo un error.
+- “Para”: ¿cómo encaja su deseo inmediato de hacer algo en la perspectiva general? ¿Cuál es el beneficio general que intentan lograr? ¿Cuál es el gran problema que debe resolverse?
+
+Por ejemplo, las historias de usuario pueden tener este aspecto:
+- Como Pepe, quiero invitar a mis amigos, para que podamos disfrutar de este servicio juntos.
+- Como Ana, quiero organizar mi trabajo, para poder sentir que tengo un mayor control.
+- Como gestor, quiero poder comprender el progreso de mis compañeros, para poder informar sobre nuestros éxitos y fallos.
 
 # Autor
 
