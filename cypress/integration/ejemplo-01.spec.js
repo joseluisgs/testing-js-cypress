@@ -1,7 +1,9 @@
+/* eslint-disable no-undef */
 describe('Mi primer test', () => {
   it('Vamos a jugar un poco', () => {
     // Abrimos la web
     cy.visit('https://example.cypress.io');
+
     // Buscamos si contiene un elemento Type
     cy.contains('type').click();
 
