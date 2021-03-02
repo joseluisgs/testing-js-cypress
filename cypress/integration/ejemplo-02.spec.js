@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-// Ejemplo basado en una hostoria de usuario
+// Ejemplo basado en una historia de usuario
 // En el primer ejemplo vamos a realizar una prueba automática que acceda a un post concreto y busque que su autor es Nicolás
 // y que realice una búsqueda por la cadena de texto chai - HTTP para encontrar el post que he escrito.
 describe('Accedo al blog de paradigma', () => {
