@@ -1,4 +1,5 @@
 {
   "chromeWebSecurity": false,
-  "projectId": "hi4t4m"
+  "projectId": "hi4t4m",
+  "trashAssetsBeforeRuns": true
 }

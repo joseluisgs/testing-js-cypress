@@ -35,45 +35,47 @@
               @blur="doneEdit(todo)"
               @keyup.enter="doneEdit(todo)"
               @keyup.esc="cancelEdit(todo)"
+              data-cy="todo-item"
             />
           </li>
         </ul>
       </section>
       <footer class="footer" v-show="todos.length" v-cloak>
         <span class="todo-count" data-cy="todo-count">
-          <strong>{{ remaining }}</strong> {{ remaining | pluralize }} left
+          <strong>{{ remaining }}</strong> {{ remaining | pluralize }} pend.
         </span>
-        <ul class="filters">
+        <!-- <ul class="filters">
           <li>
-            <a href="#/all" :class="{ selected: visibility == 'all' }">All</a>
+            <a href="#/all" :class="{ selected: visibility == 'all' }">Todas</a>
           </li>
           <li>
             <a href="#/active" :class="{ selected: visibility == 'active' }"
-              >Active</a
+              >Activas</a
             >
           </li>
           <li>
             <a
               href="#/completed"
               :class="{ selected: visibility == 'completed' }"
-              >Completed</a
+              >Completadas</a
             >
           </li>
-        </ul>
+        </ul> -->
         <button
           class="clear-completed"
           @click="removeCompleted"
           v-show="todos.length > remaining"
+          data-cy="todo-clear-completed"
         >
-          Clear completed
+          Limpiar completadas
         </button>
       </footer>
     </section>
     <footer class="info">
-      <p>Double-click to edit a todo</p>
-      <p>Written by <a href="http://evanyou.me">Evan You</a></p>
-      <p>Testing by by <a href="https://joseluisgs.github.io/">JL González</a></p>
-      <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+      <p>Doble click para editar</p>
+      <p>Desarrollada por: <a href="http://evanyou.me">Evan You</a></p>
+      <p>Testeada por: <a href="https://joseluisgs.github.io/">JL González</a></p>
+      <p>Parte de: <a href="http://todomvc.com">TodoMVC</a></p>
     </footer>
   </div>
 </template>
@@ -308,7 +310,6 @@ label[for="toggle-all"] {
   width: 60px;
   height: 34px;
   text-align: center;
-  border: none; /* Mobile Safari */
 }
 
 .toggle-all:before {
@@ -360,20 +361,21 @@ label[for="toggle-all"] {
   /* auto, since non-WebKit browsers doesn't support input styling */
   height: auto;
   position: absolute;
-  top: 0;
+  top: auto;
   bottom: 0;
-  margin: auto 0;
+  margin: auto;
+  padding-left: 5px;
   border: none; /* Mobile Safari */
   -webkit-appearance: none;
   appearance: none;
 }
 
 .todo-list li .toggle:after {
-  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
+  content: "📌";
 }
 
 .todo-list li .toggle:checked:after {
-  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+  content: "🏁";
 }
 
 .todo-list li label {
