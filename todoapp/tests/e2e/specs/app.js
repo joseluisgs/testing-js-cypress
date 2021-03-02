@@ -69,33 +69,7 @@ describe('Todo App Test Suite', () => {
     // Insertamos dos tareas y borramos la primera, el contador de tareas activas debe actualizarse
     it('Debería permitirme borrar', () => {
       // Añadimos dos
-      // crea una tarea
-      cy.get('[data-cy=todo-input]') // vamos al input
-        .type(TODO_ITEM_ONE) // le metemos el texto
-        .type('{enter}'); // pulsamos enter
-
-      // Verificamos que la hemos añadido
-      cy.get('[data-cy=todo-list] li')
-        .eq(0) // primero li
-        .find('label')
-        .should('contain', TODO_ITEM_ONE);
-
-      // Sacamos una captura
-      // cy.screenshot();
-
-      // crea una tarea
-      cy.get('[data-cy=todo-input]')
-        .type(TODO_ITEM_TWO)
-        .type('{enter}');
-
-      // verificamos
-      cy.get('[data-cy=todo-list] li')
-        .eq(1) // segundo li
-        .find('label')
-        .should('contain', TODO_ITEM_TWO);
-
-      // Verificamos que hay dos
-      cy.get('[data-cy=todo-count]').contains('2');
+      añadirTareas();
 
       // Borramos la primera
       // la localizamos así
@@ -130,33 +104,7 @@ describe('Todo App Test Suite', () => {
   describe('Editar Tareas', () => {
     it('Debería permitirme Editar Nombre de Tarea', () => {
       // Añadimos dos
-      // crea una tarea
-      cy.get('[data-cy=todo-input]') // vamos al input
-        .type(TODO_ITEM_ONE) // le metemos el texto
-        .type('{enter}'); // pulsamos enter
-
-      // Verificamos que la hemos añadido
-      cy.get('[data-cy=todo-list] li')
-        .eq(0) // primero li
-        .find('label')
-        .should('contain', TODO_ITEM_ONE);
-
-      // Sacamos una captura
-      // cy.screenshot();
-
-      // crea una tarea
-      cy.get('[data-cy=todo-input]')
-        .type(TODO_ITEM_TWO)
-        .type('{enter}');
-
-      // verificamos
-      cy.get('[data-cy=todo-list] li')
-        .eq(1) // segundo li
-        .find('label')
-        .should('contain', TODO_ITEM_TWO);
-
-      // Verificamos que hay dos
-      cy.get('[data-cy=todo-count]').contains('2');
+      añadirTareas();
 
       // Editamos la primera
       // También así
@@ -190,33 +138,7 @@ describe('Todo App Test Suite', () => {
     // Debería permitirme cambiar el estado
     it('Debería permitirme Cambiar Estado de Tarea', () => {
       // Añadimos dos
-      // crea una tarea
-      cy.get('[data-cy=todo-input]') // vamos al input
-        .type(TODO_ITEM_ONE) // le metemos el texto
-        .type('{enter}'); // pulsamos enter
-
-      // Verificamos que la hemos añadido
-      cy.get('[data-cy=todo-list] li')
-        .eq(0) // primero li
-        .find('label')
-        .should('contain', TODO_ITEM_ONE);
-
-      // Sacamos una captura
-      // cy.screenshot();
-
-      // crea una tarea
-      cy.get('[data-cy=todo-input]')
-        .type(TODO_ITEM_TWO)
-        .type('{enter}');
-
-      // verificamos
-      cy.get('[data-cy=todo-list] li')
-        .eq(1) // segundo li
-        .find('label')
-        .should('contain', TODO_ITEM_TWO);
-
-      // Verificamos que hay dos
-      cy.get('[data-cy=todo-count]').contains('2');
+      añadirTareas();
 
       // Editamos la primera con doble clik
       cy.get('[data-cy=todo-list] li')
@@ -267,33 +189,7 @@ describe('Todo App Test Suite', () => {
     // Debería permitirme eliminar tareas completadas
     it('Debería permitirme eliminar tareas completadas', () => {
       // Añadimos dos
-      // crea una tarea
-      cy.get('[data-cy=todo-input]') // vamos al input
-        .type(TODO_ITEM_ONE) // le metemos el texto
-        .type('{enter}'); // pulsamos enter
-
-      // Verificamos que la hemos añadido
-      cy.get('[data-cy=todo-list] li')
-        .eq(0) // primero li
-        .find('label')
-        .should('contain', TODO_ITEM_ONE);
-
-      // Sacamos una captura
-      // cy.screenshot();
-
-      // crea una tarea
-      cy.get('[data-cy=todo-input]')
-        .type(TODO_ITEM_TWO)
-        .type('{enter}');
-
-      // verificamos
-      cy.get('[data-cy=todo-list] li')
-        .eq(1) // segundo li
-        .find('label')
-        .should('contain', TODO_ITEM_TWO);
-
-      // Verificamos que hay dos
-      cy.get('[data-cy=todo-count]').contains('2');
+      añadirTareas();
 
       // Editamos la primera con doble clik
       cy.get('[data-cy=todo-list] li')
@@ -333,10 +229,46 @@ describe('Todo App Test Suite', () => {
         .eq(0) // segundo li
         .find('label')
         .should('contain', TODO_ITEM_TWO);
+      
+      // También podemos hacerlo
+      cy.contains(TODO_ITEM_ONE).should('not.exist');
+      cy.contains(TODO_ITEM_TWO).should('exist');
 
       // Sacamos una captura
       // cy.screenshot();
-
     });
   });
 });
+
+/**
+ * Añade tareas para poder usarlas posteriormente 
+ */
+function añadirTareas() {
+  cy.get('[data-cy=todo-input]') // vamos al input
+    .type(TODO_ITEM_ONE) // le metemos el texto
+    .type('{enter}'); // pulsamos enter
+
+
+  // Verificamos que la hemos añadido
+  cy.get('[data-cy=todo-list] li')
+    .eq(0) // primero li
+    .find('label')
+    .should('contain', TODO_ITEM_ONE);
+
+  // Sacamos una captura
+  // cy.screenshot();
+  // crea una tarea
+  cy.get('[data-cy=todo-input]')
+    .type(TODO_ITEM_TWO)
+    .type('{enter}');
+
+  // verificamos
+  cy.get('[data-cy=todo-list] li')
+    .eq(1) // segundo li
+    .find('label')
+    .should('contain', TODO_ITEM_TWO);
+
+  // Verificamos que hay dos
+  cy.get('[data-cy=todo-count]').contains('2');
+}
+
